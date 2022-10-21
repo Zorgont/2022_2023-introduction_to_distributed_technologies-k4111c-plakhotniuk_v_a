@@ -1,2 +1,6 @@
-# 2022_2023-introduction_to_distributed_technologies-k4111c-plakhotniuk_v_a
-This is a repository for completed labs during taking a course "Introduction to distributed technologies".
+# Introduction to distributed technologies (2022-2023)
+## Repository owner: Plakhotniuk Vladlen, K4111c
+This is a repository for completed labs during taking a course **Introduction to distributed technologies**.
+
+## Reports
+### [1. Minikube installation](lab1/lab1_report.md)
