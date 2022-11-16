@@ -27,7 +27,7 @@ The requirements are present below:
     * REACT_APP_USERNAME
     * REACT_APP_COMPANY_NAME
     
-Using the requirements above the deeployment manifest was created:
+Using the requirements above the deployment manifest was created:
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
