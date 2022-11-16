@@ -1,0 +1,57 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: frontend-rs-configmap
+data:
+  username: "Vladlen"
+  company: "ITMO"
+
+---
+
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: frontend-rs
+  labels:
+    app: lab4
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: lab4
+  template:
+    metadata:
+      labels:
+        app: lab4
+    spec:
+      containers:
+        - name: frontend-rs-pod
+          image: ifilyaninitmo/itdt-contained-frontend:master
+          env:
+            - name: REACT_APP_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: frontend-rs-configmap
+                  key: username
+            - name: REACT_APP_COMPANY_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: frontend-rs-configmap
+                  key: company
+          ports:
+            - containerPort: 3000
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-rs-service
+spec:
+  selector:
+    app: lab4
+  ports:
+    - protocol: TCP
+      port: 9090
+      targetPort: 3000
+  type: LoadBalancer
