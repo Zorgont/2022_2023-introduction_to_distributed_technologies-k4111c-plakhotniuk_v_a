@@ -5,3 +5,4 @@ This is a repository for completed labs during taking a course **Introduction to
 ## Reports
 ### [1. Minikube installation](lab1/lab1_report.md)
 ### [2. Writing deployment manifest](lab2/lab2_report.md)
+### [3. Certificates and secrets](lab3/lab3_report.md)

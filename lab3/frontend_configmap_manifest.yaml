@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: frontend-rs-configmap
+data:
+  username: "Vladlen"
+  company: "ITMO"
