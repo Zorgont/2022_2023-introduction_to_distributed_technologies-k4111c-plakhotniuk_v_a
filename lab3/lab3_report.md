@@ -145,8 +145,8 @@ Applying manifests (+ creating TLS secret):
 
 ![img_1.png](resources/img_1.png)
 
-## 5. Accessing application
-To access an application it was necessary to go to the following link:
+## 5. Accessing the application
+To access the application it was necessary to go to the following link:
 ```
 https://front.vladlen.com
 ```
