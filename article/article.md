@@ -8,23 +8,20 @@ stress testing using k6 in Kubernetes cluster:
 
 All manifests, which are used in the article, can be found by the following link:
 
-https://github.com/Zorgont/2022_2023-introduction_to_distributed_technologies-k4111c-plakhotniuk_v_a
+https://github.com/Zorgont/2022_2023-introduction_to_distributed_technologies-k4111c-plakhotniuk_v_a/blob/main/article/article.md
 
 ## Table of content
 1. Overview
-2. Installing required tools
-
-...
-  
-   ...
-  
-   ...
-
+2. Install required tools
+3. Write a k6 test
+4. Prepare a cluster for stress testing
+5. Perform testing
+6. References
 
 ## Overview
 
 k6 is a modern load-testing tool, built on our years of experience in the performance and testing industries.
-This tool is created by Grafana Labs https://grafana.com/.
+This tool is created by [Grafana Labs](https://grafana.com).
 It's built to be powerful, extensible, and full-featured. The key design goal is to provide the best developer experience.
 Despite JMeter, k6 is more suitable for developers, because tests can be written using JavaScript. 
 Moreover, k6 transforms JavaScript code with test scenario into Golang, so k6 much more performable, than JMeter.
@@ -48,17 +45,17 @@ To make it all work macOS platform was used. I assume, that steps for Linux will
 some problems in case of Windows (in particular, during installation of k6-operator).
 So I would recommend using either Linux or macOS. You need to make sure, that `make` utility is working on your machine. 
 
-First, it is required to install Docker. I installed Docker Desktop https://docs.docker.com/desktop/install/mac-install/, 
+First, it is required to install Docker. I installed [Docker Desktop](https://docs.docker.com/desktop/install/mac-install), 
 because it ships docker and virtualization tools for macOS. Note: if you already have configured Kubernetes cluster,
 you can skip this step.
 
-Second, you need to install the latest version Golang https://go.dev/doc/install (for example, 1.19.3).
+Second, you need to install the [latest version Golang](https://go.dev/doc/install) (for example, 1.19.3).
 
-Third, you should install kubectl https://kubernetes.io/docs/tasks/tools/install-kubectl-macos/.
+Third, you should install [Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-macos).
 
-Fourth, helm should be installed https://helm.sh/docs/intro/install.
+Fourth, [Helm](https://helm.sh/docs/intro/install) should be installed.
 
-Fifth, it is necessary to install minikube on your local machine. Note: if you already have configured Kubernetes cluster,
+Fifth, it is necessary to install [Minikube](https://kubernetes.io/ru/docs/tasks/tools/install-minikube/) on your local machine. Note: if you already have configured Kubernetes cluster,
 you can skip this step.
 
 Finally, it is time to start your Kubernetes cluster. As it was mentioned above, if you don't have one, you can start
@@ -100,7 +97,7 @@ mentioned above, application is deployed in the same cluster; k8s manifest of th
 Also, there are a few options for the test - number of VUs (Virtual Users). So test starts with 0 VU, 
 then during first 5 seconds, this number will be increased up to 300. After 2 minutes, number of VUs will be equals 500.
 Finally, during last 30 seconds number of VUs will be decreased to 0.
-To get more information about k6 tests you can visit official documentation https://k6.io/docs.
+To get more information about k6 tests you can visit [official documentation](https://k6.io/docs).
 
 During test performing, k6 will store lots of metrics to the metric source. By default, k6 simply store them inside and
 after the end of testing show statistic as it present below: 
@@ -191,7 +188,7 @@ In the database field it is required to specify `k6`:
 ![img_8.png](resources/img_8.png)
 
 When data source is configured, it is necessary to set up default dashboards. K6 has one, you can get them from 
-official site: https://grafana.com/grafana/dashboards/10660-k6-load-testing-results/
+[official site](https://grafana.com/grafana/dashboards/10660-k6-load-testing-results).
 
 Installation of dashboards is pretty simple - you should paste url to dashboards:
 
@@ -256,7 +253,9 @@ is a little out of scope of the article.
 
 ## References
 
-https://qainsights.com/performance-tools-benchmarking/
-https://k6.io/blog/running-distributed-tests-on-k8s/
-https://k6.io/docs/results-output/real-time/
-https://kubernetes.io/docs/concepts/extend-kubernetes/operator/
+- https://qainsights.com/performance-tools-benchmarking/
+- https://k6.io/blog/running-distributed-tests-on-k8s/
+- https://k6.io/docs/results-output/real-time/
+- https://kubernetes.io/docs/concepts/extend-kubernetes/operator/
+- https://www.useanvil.com/blog/engineering/persisting-load-test-data-with-k6/
+- https://engineering.empathy.co/distributed-load-testing-with-k6/
