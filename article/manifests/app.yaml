@@ -1,0 +1,63 @@
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-configmap
+data:
+  username: "Vladlen"
+  company: "k6-sample"
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-react
+  labels:
+    app: app-react
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: app-react
+  template:
+    metadata:
+      labels:
+        app: app-react
+    spec:
+      containers:
+        - name: app-react
+          image: ifilyaninitmo/itdt-contained-frontend:master
+          ports:
+            - containerPort: 3000
+          env:
+            - name: REACT_APP_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: app-configmap
+                  key: username
+            - name: REACT_APP_COMPANY_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: app-configmap
+                  key: company
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "250m"
+            limits:
+              memory: "768Mi"
+              cpu: "400m"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-service
+spec:
+  selector:
+    app: app-react
+  ports:
+    - protocol: TCP
+      port: 9090
+      targetPort: 3000
+  type: LoadBalancer
