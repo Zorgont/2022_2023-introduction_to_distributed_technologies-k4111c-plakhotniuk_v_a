@@ -1,5 +1,7 @@
 # Using k6, InfluxDB and Grafana to perform and monitor stress testing in Kubernetes
 
+![img.png](resources/img_0.png)
+
 This article is aimed to describe the whole process of performing 
 stress testing using k6 in Kubernetes cluster:
 1. Installing and configuring environment.
