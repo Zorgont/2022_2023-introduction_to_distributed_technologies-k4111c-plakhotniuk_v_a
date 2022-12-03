@@ -10,3 +10,4 @@ This is a repository for completed labs during taking a course **Introduction to
 
 ## Articles
 ### [1. Using k6, InfluxDB and Grafana to perform and monitor stress testing in Kubernetes](article/article.md)
+Medium: https://medium.com/@zorgont/using-k6-influxdb-and-grafana-to-perform-and-monitor-stress-testing-in-kubernetes-cbe785ef9fb
